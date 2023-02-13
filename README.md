@@ -3,7 +3,7 @@
 Selected (for copyright reasons) source files of university course project. <br />
 <br />
 Input: <br />
-Games state of Pacman <br />
+Game state of Pacman <br />
 <br />
 Output: <br />
 Paths for Pacman using different search algorithms <br />
