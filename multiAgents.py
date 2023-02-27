@@ -83,9 +83,9 @@ class ReflexAgent(Agent):
                 activeGhostPos.append(pos)
         
         if (len(foodPos) == 0): # end game
-            return 100000
+            return 10000
         else:
-            # closest food distance
+            # closest and average food distance
             distToClosestFood = 10000
             aveFoodDist = 0
             for food in foodPos:
@@ -105,11 +105,11 @@ class ReflexAgent(Agent):
                 aveGhostDist = aveGhostDist + actGhostDist
 
             if (len(activeGhostPos) == 0):
-                aveGhostDist = 100000
+                aveGhostDist = 10000
             else:
                 aveGhostDist = aveGhostDist / len(activeGhostPos)
 
-            score = 2 * distToClosestGhost + 1 * aveGhostDist - 0 * aveFoodDist - distToClosestFood - 100 * len(foodPos) # messed around with the coefficients
+            score = 2 * distToClosestGhost + 1 * aveGhostDist - 0 * aveFoodDist - distToClosestFood - 100 * len(foodPos) # played around with the coefficients
             return score
         
 
@@ -297,7 +297,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
                     succ = gameState.generateSuccessor(agentIndex, action)
                     val = expectimax(succ, currDepth + 1, agentIndex + 1, num_ghosts)
                     maxVal = max(maxVal, val)
-                return maxVal
+                return maxVal # maxVal implementation stays the same
             else: # agent is ghost
                 minVal = 100000.0
                 legalActions = gameState.getLegalActions(agentIndex)
